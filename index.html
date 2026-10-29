@@ -94,9 +94,12 @@
 
   /* Game 1: ticket stub */
   .stub{background:var(--paper);color:var(--ink);border-radius:6px;overflow:hidden}
-  .stub-art{background:var(--gold);padding:28px 24px;display:grid;grid-template-columns:repeat(3,minmax(0,84px));gap:12px;border-bottom:2px dashed var(--ink)}
-  .stub-art span{aspect-ratio:1;border-radius:50%;background:var(--foil);display:grid;place-items:center;font-family:var(--display);font-size:1.3rem;color:var(--ink)}
-  .stub-art span.hit{background:var(--white)}
+  .stub-shot{display:block;background:var(--ink);border-bottom:2px dashed var(--ink)}
+  .stub-shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+  .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0 0}
+  .thumbs a{display:block;border-radius:4px;overflow:hidden;line-height:0}
+  .thumbs img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:opacity .2s}
+  .thumbs a:hover img{opacity:.8}
   .stub-body{padding:24px 24px 28px}
 
   /* Game 2: window */
@@ -179,14 +182,18 @@
       <div class="game-grid">
         <article class="game">
           <div class="stub">
-            <div class="stub-art" aria-hidden="true">
-              <span>7</span><span class="hit">$</span><span>?</span>
-              <span class="hit">$</span><span>✶</span><span class="hit">$</span>
-            </div>
+            <a class="stub-shot" href="images/scratch-1.jpg" target="_blank" rel="noopener">
+              <img src="images/scratch-1.jpg" alt="Scratch Is All You Need title screen with the card-table crew" width="1600" height="900">
+            </a>
             <div class="stub-body">
               <h3>Scratch Is All You Need</h3>
               <p>A scratch-card game with 21 tickets, each built from lottery and casino ideas from around the world. Early tickets are easy to read. Later ones bend the rules in ways a real ticket never could.</p>
               <p>It is made almost entirely with AI, and it doesn't pretend otherwise.</p>
+              <div class="thumbs">
+                <a href="images/scratch-2.jpg" target="_blank" rel="noopener"><img src="images/scratch-2.jpg" alt="Scratching through the title screen to reveal the game table" loading="lazy" width="1600" height="900"></a>
+                <a href="images/scratch-3.jpg" target="_blank" rel="noopener"><img src="images/scratch-3.jpg" alt="A Pocket Change scratch ticket being scratched on a green felt table" loading="lazy" width="1600" height="900"></a>
+                <a href="images/scratch-4.jpg" target="_blank" rel="noopener"><img src="images/scratch-4.jpg" alt="Jackpot win with coins bursting across the screen" loading="lazy" width="1600" height="900"></a>
+              </div>
               <dl class="facts">
                 <dt>Structure</dt><dd>3 acts, 21 tickets</dd>
                 <dt>Platform</dt><dd>PC (Steam)</dd>
