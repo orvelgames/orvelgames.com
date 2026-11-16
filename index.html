@@ -3,146 +3,210 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Orvel Studio</title>
-<meta name="description" content="Orvel Studio is an independent game studio in South Korea, making small PC games built around one strange idea each.">
-<meta property="og:title" content="Orvel Studio">
-<meta property="og:description" content="Independent game studio in South Korea. Now making Scratch Is All You Need and ALT F4.">
+<title>Orvel Games — Roguelite indie games</title>
+<meta name="description" content="Orvel Games makes roguelite indie games. Swindler's Roulette, a pixel-art gambling roguelite about rigging a casino wheel, is out now on itch.io.">
+<meta property="og:title" content="Orvel Games">
+<meta property="og:description" content="Roguelite indie games. Swindler's Roulette is out now on itch.io: rig the wheel, pay the debt, don't get caught.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231D1B3A'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%23F2C94C' stroke-width='8'/%3E%3C/svg%3E">
+<meta property="og:url" content="https://orvelgames.com/">
+<meta property="og:image" content="https://orvelgames.com/images/swindlers-roulette/0_cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0F0E12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230F0E12'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%23FFD84A' stroke-width='6' stroke-dasharray='116 16' transform='rotate(-26 32 32)'/%3E%3Ccircle cx='45.5' cy='16' r='5' fill='%23FFD84A'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="images/orvel-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#1D1B3A;
-    --ink-soft:#4A4766;
-    --paper:#EEEBF6;
-    --paper-deep:#E2DEEE;
-    --foil:#C3C6CF;
-    --gold:#F2C94C;
-    --signal:#E5384D;
-    --white:#FFFFFF;
-    --display:"Bowlby One", "Arial Black", sans-serif;
+    --night:#0F0E12;
+    --night-2:#18161D;
+    --night-3:#221F29;
+    --felt:#1E5A3C;
+    --felt-deep:#143D29;
+    --wood:#4A2B1A;
+    --gold:#FFD84A;
+    --gold-deep:#E0B42C;
+    --red:#D33A47;
+    --cream:#F4EFE2;
+    --muted:#ABA698;
+    --line:rgba(244,239,226,.12);
+    --display:"Silkscreen", "Courier New", monospace;
     --body:"Instrument Sans", system-ui, sans-serif;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
   body{
-    margin:0;background:var(--paper);color:var(--ink);
+    margin:0;background:var(--night);color:var(--cream);
     font-family:var(--body);font-size:1.0625rem;line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
+  img{max-width:100%}
   a{color:inherit}
-  :focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:4px}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
   .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
   @media (max-width:600px){.wrap{padding:0 16px}}
+  h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.01em}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:6px;font-weight:600;text-decoration:none;border:2px solid transparent;line-height:1.2;transition:transform .12s ease, background-color .12s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn:active{transform:translateY(1px)}
+  .btn-gold{background:var(--gold);color:var(--night);box-shadow:0 3px 0 var(--gold-deep)}
+  .btn-gold:hover{background:#FFE170}
+  .btn-red{background:var(--red);color:var(--cream);box-shadow:0 3px 0 #9E2632}
+  .btn-ghost{border-color:var(--line);color:var(--cream)}
+  .btn-ghost:hover{border-color:var(--cream)}
+  .btn-row{display:flex;flex-wrap:wrap;gap:12px}
+  @media (prefers-reduced-motion: reduce){.btn{transition:none}.btn:hover,.btn:active{transform:none}}
 
   /* Header */
-  header{padding:28px 0}
+  header{padding:22px 0;border-bottom:1px solid var(--line)}
   header .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
-  .mark{display:flex;white-space:nowrap;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:1.25rem;letter-spacing:.01em}
-  .mark svg{width:30px;height:30px}
-  nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+  .mark{display:flex;white-space:nowrap;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:400;font-size:1.35rem;color:var(--gold)}
+  .mark svg{width:32px;height:32px;flex:none}
+  nav ul{display:flex;align-items:center;gap:26px;list-style:none;margin:0;padding:0}
   nav a{text-decoration:none;font-weight:500}
-  nav a:hover{text-decoration:underline;text-underline-offset:4px}
-  @media (max-width:600px){nav ul{gap:16px;font-size:.95rem}}
+  nav a:hover{color:var(--gold)}
+  nav .nav-discord{padding:6px 12px;border:2px solid var(--line);border-radius:6px}
+  nav .nav-discord:hover{border-color:var(--gold)}
+  @media (max-width:700px){nav li.hide-sm{display:none} nav ul{gap:16px;font-size:.95rem}}
 
   /* Hero */
-  .hero{padding:48px 0 96px}
+  .hero{padding:72px 0 96px;background:radial-gradient(80% 90% at 85% 40%, rgba(30,90,60,.45), transparent 70%)}
   .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,6vw,4.6rem);line-height:.98;margin:0 0 24px;letter-spacing:-.01em}
-  .hero p{max-width:30em;margin:0;color:var(--ink-soft);font-size:1.15rem}
-  @media (max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:40px}.hero{padding:24px 0 72px}}
+  .eyebrow{display:inline-block;font-family:var(--display);font-weight:400;color:var(--gold);font-size:1rem;margin:0 0 14px}
+  .hero h1{font-size:clamp(2.4rem,5.4vw,4.2rem);line-height:1.02;margin:0 0 24px}
+  .hero h1 span{color:var(--gold)}
+  .hero p.lead{max-width:30em;margin:0 0 32px;color:var(--muted);font-size:1.15rem}
+  .hero p.lead strong{color:var(--cream);font-weight:600}
+  @media (max-width:880px){.hero .wrap{grid-template-columns:1fr;gap:48px}.hero{padding:40px 0 72px}}
 
-  /* Scratch ticket */
-  .ticket{
-    position:relative;background:var(--white);border-radius:6px;padding:22px 22px 18px;
-    box-shadow:0 1px 0 var(--paper-deep),0 18px 40px -22px rgba(29,27,58,.45);
-    transform:rotate(1.5deg);
-    -webkit-mask:radial-gradient(circle 9px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,
-                 radial-gradient(circle 9px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat;
-            mask:radial-gradient(circle 9px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,
-                 radial-gradient(circle 9px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat;
-  }
-  @media (max-width:860px){.ticket{transform:none}}
-  .ticket-top{display:flex;justify-content:space-between;align-items:baseline;font-size:.85rem;color:var(--ink-soft);margin-bottom:14px}
-  .ticket-top strong{font-family:var(--display);font-weight:400;color:var(--ink);font-size:1.05rem}
-  .scratch{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:16/10;background:var(--gold)}
-  .prize{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px}
-  .prize small{font-weight:600;font-size:.9rem}
-  .prize b{font-family:var(--display);font-weight:400;font-size:clamp(1.8rem,4.4vw,2.6rem);line-height:1;margin:6px 0 10px}
-  .prize a{font-weight:600}
-  .scratch canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair;transition:opacity .5s ease}
-  .scratch canvas.gone{opacity:0;pointer-events:none}
-  @media (prefers-reduced-motion: reduce){.scratch canvas{transition:none}}
-  .ticket-foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:.85rem;color:var(--ink-soft)}
-  .ticket-foot button{font:inherit;font-weight:600;color:var(--ink);background:none;border:0;padding:4px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  /* Rigged wheel toy */
+  .table{background:var(--felt);border:10px solid var(--wood);border-radius:14px;padding:20px 20px 18px;box-shadow:inset 0 0 0 2px rgba(0,0,0,.25),0 24px 50px -28px rgba(0,0,0,.9)}
+  .table-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+  .table-top strong{font-family:var(--display);font-weight:400;font-size:1.25rem;color:var(--gold)}
+  .table-top span{font-size:.85rem;color:rgba(244,239,226,.75)}
+  .wheel-box{position:relative;max-width:340px;margin:0 auto}
+  .wheel-box svg{display:block;width:100%;height:auto}
+  .wheel-box .seg{cursor:pointer}
+  .wheel-box .seg:focus{outline:none}
+  .wheel-box .seg:focus-visible path.face{stroke:var(--cream);stroke-width:2.5}
+  .wheel-box .seg:hover path.face{filter:brightness(1.18)}
+  .heat{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;margin:12px 0 10px;font-size:.85rem}
+  .heat-bar{height:10px;border-radius:5px;background:rgba(0,0,0,.35);overflow:hidden}
+  .heat-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--red));transition:width .4s ease}
+  .heat b{font-weight:600;font-variant-numeric:tabular-nums;min-width:2.5em;text-align:right}
+  .table-foot{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .table-foot p{margin:0;font-size:.9rem;color:rgba(244,239,226,.85);min-height:2.9em}
+  .table-foot .btn{padding:10px 22px;font-family:var(--display);font-weight:400;font-size:1.1rem;flex:none}
+  .table-foot .btn[disabled]{opacity:.6;cursor:wait;transform:none}
 
   /* Sections */
-  section{padding:88px 0}
-  .games{background:var(--ink);color:var(--paper)}
-  h2{font-family:var(--display);font-weight:400;font-size:clamp(2rem,4vw,2.8rem);line-height:1;margin:0 0 12px}
-  .lede{max-width:34em;margin:0 0 56px;opacity:.8}
-  .game-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-  @media (max-width:860px){.game-grid{grid-template-columns:1fr;gap:48px}}
-  .game h3{font-family:var(--display);font-weight:400;font-size:1.7rem;line-height:1.05;margin:0 0 12px}
-  .game p{margin:0 0 16px;max-width:32em}
-  .facts{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;margin:20px 0 0;font-size:.95rem}
-  .facts dt{opacity:.65}
+  section{padding:96px 0}
+  h2{font-size:clamp(2.1rem,4.6vw,3.2rem);line-height:1;margin:0 0 14px}
+  .lede{max-width:36em;margin:0 0 48px;color:var(--muted)}
+
+  /* Featured game */
+  .featured{background:var(--night-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:400;font-size:.95rem;color:var(--night);background:var(--gold);padding:4px 10px;border-radius:4px;margin-bottom:18px}
+  .badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red)}
+  .tagline{font-family:var(--display);font-weight:400;color:var(--gold);font-size:clamp(1.15rem,2.4vw,1.45rem);margin:0 0 40px}
+  .feat-top{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:start}
+  @media (max-width:880px){.feat-top{grid-template-columns:1fr;gap:36px}}
+  .trailer{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;border-radius:8px;overflow:hidden;background:var(--night);cursor:pointer;box-shadow:0 0 0 2px var(--line)}
+  .trailer img{display:block;width:100%;height:100%;object-fit:cover;transition:filter .2s}
+  .trailer:hover img{filter:brightness(.8)}
+  .trailer .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:10px;background:var(--red);color:var(--cream);font-family:var(--display);font-weight:400;font-size:1.15rem;padding:12px 20px 12px 16px;border-radius:6px;box-shadow:0 4px 0 #9E2632}
+  .trailer .play svg{width:22px;height:22px}
+  .trailer iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .feat-text p{margin:0 0 16px}
+  .feat-text .btn-row{margin:24px 0 28px}
+  .facts{display:grid;grid-template-columns:auto 1fr;gap:6px 20px;margin:0;font-size:.95rem;padding-top:20px;border-top:1px solid var(--line)}
+  .facts dt{color:var(--muted)}
   .facts dd{margin:0;font-weight:500}
+  .facts dd.plats{display:flex;flex-wrap:wrap;gap:8px}
+  .plat{display:inline-flex;align-items:center;gap:8px;padding:1px 10px;border-radius:999px;font-size:.9rem;border:1px solid transparent}
+  .plat small{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+  .plat.on{background:rgba(111,207,151,.12);border-color:rgba(111,207,151,.55)}
+  .plat.on small{color:#6FCF97}
+  .plat.soon{color:var(--muted);border-style:dashed;border-color:rgba(244,239,226,.3)}
+  .fine{font-size:.85rem;color:var(--muted);margin:20px 0 0}
 
-  /* Game 1: ticket stub */
-  .stub{background:var(--paper);color:var(--ink);border-radius:6px;overflow:hidden}
-  .stub-shot{display:block;background:var(--ink);border-bottom:2px dashed var(--ink)}
-  .stub-shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
-  .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0 0}
-  .thumbs a{display:block;border-radius:4px;overflow:hidden;line-height:0}
-  .thumbs img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:opacity .2s}
-  .thumbs a:hover img{opacity:.8}
-  .stub-body{padding:24px 24px 28px}
+  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:64px 0 0;padding:0;list-style:none}
+  @media (max-width:980px){.pillars{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.pillars{grid-template-columns:1fr}}
+  .pillars li{background:var(--night-3);border:1px solid var(--line);border-top:4px solid var(--c,var(--gold));border-radius:8px;padding:20px 20px 22px}
+  .pillars h3{font-size:1.3rem;margin:0 0 8px;color:var(--c,var(--gold))}
+  .pillars p{margin:0;font-size:.97rem;color:rgba(244,239,226,.85)}
 
-  /* Game 2: window */
-  .win{background:var(--white);color:var(--ink);border-radius:8px;overflow:hidden;border:2px solid var(--paper)}
-  .win-bar{display:flex;justify-content:space-between;align-items:center;background:var(--paper-deep);padding:8px 8px 8px 14px;font-size:.9rem;font-weight:600}
+  .shots{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:48px 0 0}
+  .shots a{display:block;border-radius:6px;overflow:hidden;line-height:0;box-shadow:0 0 0 1px var(--line);grid-column:span 2}
+  .shots a.wide{grid-column:span 3}
+  .shots img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .25s ease}
+  .shots a:hover img{transform:scale(1.03)}
+  @media (max-width:700px){.shots{grid-template-columns:1fr 1fr}.shots a,.shots a.wide{grid-column:span 1}.shots a.wide:first-child{grid-column:span 2}}
+  @media (prefers-reduced-motion: reduce){.shots img,.trailer img{transition:none}.shots a:hover img{transform:none}}
+
+  /* More games */
+  .more-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+  @media (max-width:800px){.more-grid{grid-template-columns:1fr}}
+  .card{background:var(--night-2);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+  .card-body{padding:22px 24px 24px}
+  .card h3{font-size:1.5rem;margin:0 0 8px}
+  .card p{margin:0 0 14px;color:rgba(244,239,226,.85)}
+  .card .status{font-size:.85rem;color:var(--muted);margin:0}
+  .card-shot{display:block;line-height:0}
+  .card-shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+  .win-bar{display:flex;justify-content:space-between;align-items:center;background:var(--night-3);padding:8px 8px 8px 14px;font-size:.9rem;font-weight:600;border-bottom:1px solid var(--line)}
   .win-ctrl{display:flex;gap:4px}
-  .win-ctrl span,.win-ctrl button{width:34px;height:26px;display:grid;place-items:center;border:0;border-radius:4px;background:transparent;font:inherit;font-size:1rem;color:var(--ink)}
+  .win-ctrl span,.win-ctrl button{width:34px;height:26px;display:grid;place-items:center;border:0;border-radius:4px;background:transparent;font:inherit;font-size:1rem;color:var(--cream)}
   .win-ctrl button{cursor:pointer}
-  .win-ctrl button:hover{background:var(--signal);color:var(--white)}
-  .win-screen{position:relative;background:var(--ink);color:var(--paper);padding:34px 24px;min-height:150px;display:grid;place-items:center;text-align:center}
-  .win-screen p{margin:0;font-family:var(--display);font-size:1.35rem;line-height:1.15;max-width:none}
-  .win-screen .note{display:block;margin-top:10px;font-family:var(--body);font-size:.9rem;opacity:.7}
-  .win-body{padding:24px 24px 28px}
+  .win-ctrl button:hover{background:var(--red)}
+  .win-screen{background:var(--night);aspect-ratio:16/9;display:grid;place-items:center;text-align:center;padding:24px}
+  .win-screen p{margin:0;font-family:var(--display);font-weight:400;font-size:1.5rem;line-height:1.15}
+  .win-screen .note{display:block;margin-top:10px;font-family:var(--body);font-weight:400;font-size:.9rem;color:var(--muted)}
 
   /* About */
+  .about{background:var(--night-2);border-top:1px solid var(--line)}
   .about .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
   .about p{margin:0 0 18px;max-width:36em}
   @media (max-width:860px){.about .wrap{grid-template-columns:1fr;gap:16px}}
 
   /* Contact */
-  .contact{background:var(--gold);padding:80px 0}
-  .contact a.mail{font-family:var(--display);font-size:clamp(1.5rem,5vw,3rem);line-height:1.1;text-decoration:none;word-break:break-word;border-bottom:4px solid var(--ink)}
-  .contact a.mail:hover{color:var(--signal);border-color:var(--signal)}
-  .contact p{margin:0 0 20px;max-width:34em}
+  .contact{background:var(--gold);color:var(--night);padding:88px 0}
+  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end}
+  @media (max-width:800px){.contact .wrap{grid-template-columns:1fr;gap:40px}}
+  .contact p{margin:0 0 20px;max-width:30em}
+  .contact h3{font-size:1.2rem;margin:0 0 10px}
+  .contact a.mail{font-weight:600;font-size:clamp(1.4rem,3.6vw,2.2rem);line-height:1.1;text-decoration:none;word-break:break-word;border-bottom:4px solid var(--night)}
+  .contact a.mail:hover{color:var(--red);border-color:var(--red)}
+  .contact .btn-dark{background:var(--night);color:var(--gold);box-shadow:0 3px 0 #000}
+  .contact .btn-dark:hover{background:#26232E}
 
-  footer{padding:36px 0 44px;font-size:.9rem;color:var(--ink-soft)}
+  footer{padding:32px 0 40px;font-size:.9rem;color:var(--muted)}
   footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
   footer p{margin:0}
+  footer nav a{margin-left:18px;text-decoration:none}
+  footer nav a:first-child{margin-left:0}
+  footer nav a:hover{color:var(--gold)}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <a class="mark" href="#top" aria-label="Orvel Studio home">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1D1B3A"/><circle cx="32" cy="32" r="15" fill="none" stroke="#F2C94C" stroke-width="8"/></svg>
-      Orvel Studio
+    <a class="mark" href="#top" aria-label="Orvel Games home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="none" stroke="#FFD84A" stroke-width="6" stroke-dasharray="132 19" transform="rotate(-26 32 32)"/><circle cx="47.4" cy="13.6" r="5.5" fill="#FFD84A"/></svg>
+      Orvel Games
     </a>
     <nav aria-label="Main">
       <ul>
         <li><a href="#games">Games</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li class="hide-sm"><a href="#about">About</a></li>
+        <li class="hide-sm"><a href="#contact">Contact</a></li>
+        <li><a class="nav-discord" href="https://discord.gg/ZeMT7Nf8t3" target="_blank" rel="noopener">Discord</a></li>
       </ul>
     </nav>
   </div>
@@ -152,79 +216,125 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap">
       <div>
-        <h1 id="hero-title">Small games with one strange idea each.</h1>
-        <p>Orvel Studio is an independent game studio in South Korea. We make short, sharp PC games and publish them ourselves on Steam.</p>
+        <p class="eyebrow">Orvel Games</p>
+        <h1 id="hero-title">Roguelite <span>indie games.</span></h1>
+        <p class="lead">We make roguelites where every run is a new way to break the rules. Our first one, <strong>Swindler's Roulette</strong>, is out now on itch.io.</p>
+        <div class="btn-row">
+          <a class="btn btn-gold" href="#games">See Swindler's Roulette</a>
+          <a class="btn btn-ghost" href="https://orvelgames.itch.io/swindlers-roulette" target="_blank" rel="noopener">Play the free demo</a>
+        </div>
       </div>
 
-      <div class="ticket" aria-label="Scratch card">
-        <div class="ticket-top"><strong>Orvel Instant</strong><span>Ticket no. 0001</span></div>
-        <div class="scratch" id="scratch">
-          <div class="prize">
-            <small>You won</small>
-            <b>2 games in development</b>
-            <a href="#games">See what they are</a>
-          </div>
-          <canvas id="foil" aria-hidden="true"></canvas>
+      <div class="table" aria-labelledby="toy-title">
+        <div class="table-top"><strong id="toy-title">Rig the wheel</strong><span>Tap a number, then spin</span></div>
+        <div class="wheel-box">
+          <svg id="wheel" viewBox="-112 -120 224 232" role="group" aria-label="Roulette wheel with 12 numbers"></svg>
         </div>
-        <div class="ticket-foot">
-          <span>Scratch the silver area</span>
-          <button type="button" id="reveal">Reveal</button>
+        <div class="heat" aria-label="Pit boss suspicion">
+          <span>Heat</span>
+          <div class="heat-bar"><i id="heat-fill"></i></div>
+          <b id="heat-num">0</b>
+        </div>
+        <div class="table-foot">
+          <p id="toy-msg" aria-live="polite">The wheel is honest. For now.</p>
+          <button type="button" class="btn btn-red" id="spin">Spin</button>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="games" id="games" aria-labelledby="games-title">
+  <section class="featured" id="games" aria-labelledby="sr-title">
     <div class="wrap">
-      <h2 id="games-title">In development</h2>
-      <p class="lede">Two games are in production for PC. Steam pages are on the way.</p>
+      <span class="badge">Out now on itch.io</span>
+      <h2 id="sr-title">Swindler's Roulette</h2>
+      <p class="tagline">Rig the wheel. Pay the debt. Don't get caught.</p>
 
-      <div class="game-grid">
-        <article class="game">
-          <div class="stub">
-            <a class="stub-shot" href="images/scratch-1.jpg" target="_blank" rel="noopener">
-              <img src="images/scratch-1.jpg" alt="Scratch Is All You Need title screen with the card-table crew" width="1600" height="900">
-            </a>
-            <div class="stub-body">
-              <h3>Scratch Is All You Need</h3>
-              <p>A scratch-card game with 21 tickets, each built from lottery and casino ideas from around the world. Early tickets are easy to read. Later ones bend the rules in ways a real ticket never could.</p>
-              <p>It is made almost entirely with AI, and it doesn't pretend otherwise.</p>
-              <div class="thumbs">
-                <a href="images/scratch-2.jpg" target="_blank" rel="noopener"><img src="images/scratch-2.jpg" alt="Scratching through the title screen to reveal the game table" loading="lazy" width="1600" height="900"></a>
-                <a href="images/scratch-3.jpg" target="_blank" rel="noopener"><img src="images/scratch-3.jpg" alt="A Pocket Change scratch ticket being scratched on a green felt table" loading="lazy" width="1600" height="900"></a>
-                <a href="images/scratch-4.jpg" target="_blank" rel="noopener"><img src="images/scratch-4.jpg" alt="Jackpot win with coins bursting across the screen" loading="lazy" width="1600" height="900"></a>
-              </div>
-              <dl class="facts">
-                <dt>Structure</dt><dd>3 acts, 21 tickets</dd>
-                <dt>Platform</dt><dd>PC (Steam)</dd>
-                <dt>Status</dt><dd>In development</dd>
-              </dl>
-            </div>
+      <div class="feat-top">
+        <button type="button" class="trailer" id="trailer" aria-label="Play the Swindler's Roulette trailer">
+          <img src="images/swindlers-roulette/3_jackpot.png" alt="" width="1440" height="810">
+          <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>Watch trailer</span>
+        </button>
+
+        <div class="feat-text">
+          <p>You're a swindler buried in loan-shark debt, and the only way out runs through an underground casino's roulette wheel. You've been tampering with it.</p>
+          <p>Pay off the debt every night for 15 nights. Bolt mods onto the wheel's 12 pockets, stack charms and dirty tricks into a build, and keep the pit boss from noticing what you're doing.</p>
+          <div class="btn-row">
+            <a class="btn btn-gold" href="https://orvelgames.itch.io/swindlers-roulette" target="_blank" rel="noopener">Get it on itch.io</a>
+            <a class="btn btn-ghost" href="https://orvelgames.itch.io/swindlers-roulette" target="_blank" rel="noopener">Free browser demo</a>
+          </div>
+          <dl class="facts">
+            <dt>Genre</dt><dd>Gambling roguelite, pixel art</dd>
+            <dt>Platform</dt><dd class="plats"><span class="plat on">Windows <small>Out now</small></span><span class="plat soon">Android <small>Coming soon</small></span></dd>
+            <dt>Demo</dt><dd>Free in the browser, first 10 nights</dd>
+            <dt>Languages</dt><dd>English, Korean, Japanese, Simplified Chinese, German, French, Spanish, Brazilian Portuguese, Russian</dd>
+            <dt>Version</dt><dd>1.0.4</dd>
+          </dl>
+        </div>
+      </div>
+
+      <ul class="pillars">
+        <li style="--c:var(--gold)">
+          <h3>Rig the wheel</h3>
+          <p>31 wheel mods snap onto the pockets, up to three per pocket. When the ball lands, they fire in order.</p>
+        </li>
+        <li style="--c:#6FCF97">
+          <h3>Build a con</h3>
+          <p>37 charms and 28 consumables across seven families. Collect two, four or six of a family for set bonuses.</p>
+        </li>
+        <li style="--c:var(--red)">
+          <h3>Watch the heat</h3>
+          <p>Every trick raises suspicion. At 50 the pit boss starts watching pockets. At 100 you're dragged to the back room.</p>
+        </li>
+        <li style="--c:#B98CF0">
+          <h3>15 nights, 5 bosses</h3>
+          <p>The nightly debt climbs from 10 to 270K. The casino's regulars run the boss nights, and Hades owns the house.</p>
+        </li>
+      </ul>
+
+      <div class="shots">
+        <a class="wide" href="images/swindlers-roulette/4_full_items_joker.png" target="_blank" rel="noopener"><img src="images/swindlers-roulette/4_full_items_joker.png" alt="A late-game wheel covered in mods, with a legendary Joker firing a 4x combo" loading="lazy" width="1440" height="810"></a>
+        <a class="wide" href="images/swindlers-roulette/5_shell_game.png" target="_blank" rel="noopener"><img src="images/swindlers-roulette/5_shell_game.png" alt="The Last Chance shell game: a dealer with three glowing goblets" loading="lazy" width="1440" height="810"></a>
+        <a href="images/swindlers-roulette/1_title.png" target="_blank" rel="noopener"><img src="images/swindlers-roulette/1_title.png" alt="Swindler's Roulette title screen" loading="lazy" width="1440" height="810"></a>
+        <a href="images/swindlers-roulette/2_bigwin_heat.png" target="_blank" rel="noopener"><img src="images/swindlers-roulette/2_bigwin_heat.png" alt="A big win on night one while the pit boss raises the heat" loading="lazy" width="1440" height="810"></a>
+        <a href="images/swindlers-roulette/3_jackpot.png" target="_blank" rel="noopener"><img src="images/swindlers-roulette/3_jackpot.png" alt="A jackpot payout with coins across the table" loading="lazy" width="1440" height="810"></a>
+      </div>
+
+      <p class="fine">Made with generative AI tools for code, pixel art, music and sound. No real money is involved: in-game currency only.</p>
+    </div>
+  </section>
+
+  <section class="more" id="more" aria-labelledby="more-title">
+    <div class="wrap">
+      <h2 id="more-title">Also in development</h2>
+      <p class="lede">Smaller games we're building alongside Swindler's Roulette. Store pages are on the way.</p>
+
+      <div class="more-grid">
+        <article class="card">
+          <a class="card-shot" href="images/scratch-1.jpg" target="_blank" rel="noopener">
+            <img src="images/scratch-1.jpg" alt="Scratch Is All You Need title screen with the card-table crew" loading="lazy" width="1600" height="900">
+          </a>
+          <div class="card-body">
+            <h3>Scratch Is All You Need</h3>
+            <p>A scratch-card game with 21 tickets built from lottery and casino ideas from around the world. Later tickets bend the rules in ways a real ticket never could.</p>
+            <p class="status">PC · In development</p>
           </div>
         </article>
 
-        <article class="game">
-          <div class="win">
-            <div class="win-bar">
-              <span>ALT F4.exe</span>
-              <div class="win-ctrl">
-                <span aria-hidden="true">–</span><span aria-hidden="true">□</span>
-                <button type="button" id="closer" aria-label="Close window">✕</button>
-              </div>
+        <article class="card">
+          <div class="win-bar">
+            <span>ALT F4.exe</span>
+            <div class="win-ctrl">
+              <span aria-hidden="true">–</span><span aria-hidden="true">□</span>
+              <button type="button" id="closer" aria-label="Close window">✕</button>
             </div>
-            <div class="win-screen" aria-live="polite">
-              <p id="win-msg">Do one simple thing.<span class="note">Get it right and the game closes.</span></p>
-            </div>
-            <div class="win-body">
-              <h3>ALT F4</h3>
-              <p>A game you win by closing it. Every stage asks for one simple action, and doing it right shuts the game down and sends you to the next one. The catch is that the game lies to you about what that action is.</p>
-              <dl class="facts">
-                <dt>Title</dt><dd>Working title</dd>
-                <dt>Engine</dt><dd>Godot</dd>
-                <dt>Platform</dt><dd>PC (Steam)</dd>
-                <dt>Status</dt><dd>In development</dd>
-              </dl>
-            </div>
+          </div>
+          <div class="win-screen" aria-live="polite">
+            <p id="win-msg">Do one simple thing.<span class="note">Get it right and the game closes.</span></p>
+          </div>
+          <div class="card-body">
+            <h3>ALT F4</h3>
+            <p>A game you win by closing it. Every stage asks for one simple action, and the game lies to you about what that action is.</p>
+            <p class="status">Working title · PC · In development</p>
           </div>
         </article>
       </div>
@@ -235,84 +345,161 @@
     <div class="wrap">
       <h2 id="about-title">About</h2>
       <div>
-        <p>Orvel Studio is a one-person studio founded in 2026 in South Korea. Each game starts from a single idea and is kept small enough to finish in one sitting.</p>
-        <p>We build with Godot and an AI-assisted pipeline for art, code and sound, which lets a studio of one ship games that would normally need a team. Everything is self-published on Steam.</p>
+        <p>Orvel Games makes roguelite indie games. We like runs short enough to replay and builds that get out of hand. Each game starts from one rule we want to break, and we keep breaking it until it's fun.</p>
+        <p>We build with Godot and an AI-assisted pipeline for code, art and sound, and publish our games ourselves, starting on itch.io.</p>
       </div>
     </div>
   </section>
 
   <section class="contact" id="contact" aria-labelledby="contact-title">
     <div class="wrap">
-      <h2 id="contact-title">Contact</h2>
-      <p>For press, streamers, partnerships or anything else, write to us.</p>
-      <a class="mail" href="mailto:contact@orvelgames.com">contact@orvelgames.com</a>
+      <div>
+        <h2 id="contact-title">Say hi</h2>
+        <p>For press, streamers, partnerships or anything else, write to us.</p>
+        <a class="mail" href="mailto:contact@orvelgames.com">contact@orvelgames.com</a>
+      </div>
+      <div>
+        <h3>Join the Discord</h3>
+        <p>Share your best run, report bugs and hear about updates first.</p>
+        <a class="btn btn-dark" href="https://discord.gg/ZeMT7Nf8t3" target="_blank" rel="noopener">Join the Discord</a>
+      </div>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <p>© 2026 Orvel Studio. Registered sole proprietorship, Republic of Korea.</p>
-    <!-- 소셜 계정을 만들면 아래 주석을 풀고 주소를 넣으세요
-    <p><a href="https://github.com/YOUR_ID">GitHub</a>&nbsp;&nbsp;<a href="https://x.com/YOUR_ID">X</a></p>
-    -->
+    <p>© 2026 Orvel Games.</p>
+    <nav aria-label="Elsewhere">
+      <a href="https://orvelgames.itch.io/swindlers-roulette" target="_blank" rel="noopener">itch.io</a>
+      <a href="https://discord.gg/ZeMT7Nf8t3" target="_blank" rel="noopener">Discord</a>
+      <a href="https://youtu.be/QcujLWy_Nro" target="_blank" rel="noopener">YouTube</a>
+    </nav>
   </div>
 </footer>
 
 <script>
 (function(){
-  /* Scratch card */
-  var box = document.getElementById('scratch');
-  var cv = document.getElementById('foil');
-  var ctx = cv.getContext('2d');
-  var revealed = false, drawing = false, checks = 0;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS = 'http://www.w3.org/2000/svg';
 
-  function paint(){
-    var r = box.getBoundingClientRect(), d = window.devicePixelRatio || 1;
-    cv.width = Math.round(r.width * d); cv.height = Math.round(r.height * d);
-    ctx.setTransform(d,0,0,d,0,0);
-    var g = ctx.createLinearGradient(0,0,r.width,r.height);
-    g.addColorStop(0,'#D9DBE2'); g.addColorStop(.45,'#B4B8C3'); g.addColorStop(.55,'#E4E6EC'); g.addColorStop(1,'#A9ADB8');
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.fillStyle = g; ctx.fillRect(0,0,r.width,r.height);
-    for (var i = 0; i < r.width * r.height / 40; i++){
-      ctx.fillStyle = Math.random() > .5 ? 'rgba(255,255,255,.18)' : 'rgba(29,27,58,.06)';
-      ctx.fillRect(Math.random()*r.width, Math.random()*r.height, 1.5, 1.5);
+  /* Rigged wheel */
+  var svg = document.getElementById('wheel');
+  var N = 12, STEP = 360 / N;
+  function el(tag, attrs, parent){
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function pt(deg, r){ var a = deg * Math.PI / 180; return [r * Math.sin(a), -r * Math.cos(a)]; }
+  function sector(a0, a1, r0, r1){
+    var p0 = pt(a0, r1), p1 = pt(a1, r1), p2 = pt(a1, r0), p3 = pt(a0, r0);
+    return 'M' + p0 + 'A' + r1 + ',' + r1 + ' 0 0 1 ' + p1 + 'L' + p2 + 'A' + r0 + ',' + r0 + ' 0 0 0 ' + p3 + 'Z';
+  }
+
+  el('circle', {r:106, fill:'#4A2B1A'}, svg);
+  el('circle', {r:100, fill:'#6B4226'}, svg);
+  el('circle', {r:94, fill:'none', stroke:'#FFD84A', 'stroke-width':3}, svg);
+  var rot = el('g', {}, svg);
+  var segs = [];
+  for (var i = 0; i < N; i++){
+    var n = i + 1, a = i * STEP;
+    var g = el('g', {'class':'seg', tabindex:'0', role:'button', 'aria-label':'Rig number ' + n, 'aria-pressed':'false'}, rot);
+    el('path', {'class':'face', d:sector(a - STEP/2, a + STEP/2, 28, 91), fill: n % 2 ? '#C8343F' : '#26232E', stroke:'#E0B42C', 'stroke-width':1.2}, g);
+    var hi = el('path', {d:sector(a - STEP/2 + 1.2, a + STEP/2 - 1.2, 31, 88), fill:'none', stroke:'#FFD84A', 'stroke-width':4, opacity:0}, g);
+    var tp = pt(a, 72);
+    var t = el('text', {x:tp[0], y:tp[1], 'text-anchor':'middle', 'dominant-baseline':'central', fill:'#F4EFE2', 'font-family':'Instrument Sans, sans-serif', 'font-weight':'600', 'font-size':15, transform:'rotate(' + a + ' ' + tp[0] + ' ' + tp[1] + ')', 'pointer-events':'none'}, g);
+    t.textContent = n;
+    segs.push({g:g, hi:hi});
+    (function(idx){
+      g.addEventListener('click', function(){ rig(idx); });
+      g.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); rig(idx); } });
+    })(i);
+  }
+  el('circle', {r:28, fill:'#6B4226', stroke:'#E0B42C', 'stroke-width':2}, rot);
+  el('rect', {x:-3, y:-20, width:6, height:40, rx:2, fill:'#FFD84A'}, rot);
+  el('rect', {x:-20, y:-3, width:40, height:6, rx:2, fill:'#FFD84A'}, rot);
+  el('circle', {r:8, fill:'#FFD84A', stroke:'#B8891E', 'stroke-width':2}, rot);
+  el('path', {d:'M-9,-118 L9,-118 L0,-96 Z', fill:'#FFD84A', stroke:'#0F0E12', 'stroke-width':2, 'stroke-linejoin':'round'}, svg);
+
+  var msg = document.getElementById('toy-msg');
+  var btn = document.getElementById('spin');
+  var heatFill = document.getElementById('heat-fill');
+  var heatNum = document.getElementById('heat-num');
+  var rigged = -1, angle = 0, heat = 0, busy = false, busted = false;
+
+  function rig(idx){
+    if (busy) return;
+    rigged = rigged === idx ? -1 : idx;
+    segs.forEach(function(s, k){
+      s.hi.setAttribute('opacity', k === rigged ? 1 : 0);
+      s.g.setAttribute('aria-pressed', k === rigged ? 'true' : 'false');
+    });
+    msg.textContent = rigged < 0 ? 'Back to an honest wheel.' : 'Number ' + (rigged + 1) + ' is rigged. Spin when ready.';
+  }
+  function setHeat(v){
+    heat = Math.max(0, Math.min(100, v));
+    heatFill.style.width = heat + '%';
+    heatNum.textContent = heat;
+  }
+  function setAngle(v){ rot.setAttribute('transform', 'rotate(' + v + ')'); }
+
+  btn.addEventListener('click', function(){
+    if (busy) return;
+    if (busted){ busted = false; setHeat(0); btn.textContent = 'Spin'; msg.textContent = 'Fresh table. The pit boss went on break.'; return; }
+    busy = true; btn.disabled = true;
+    var target = rigged >= 0 ? rigged : Math.floor(Math.random() * N);
+    var jitter = rigged >= 0 ? (Math.random() - .5) * 6 : (Math.random() - .5) * 22;
+    var want = ((-target * STEP + jitter) % 360 + 360) % 360;
+    var cur = ((angle % 360) + 360) % 360;
+    var delta = ((want - cur) + 360) % 360 + 360 * (reduce ? 1 : 5);
+    var from = angle, to = angle + delta, dur = reduce ? 450 : 3400, t0 = null;
+    function frame(ts){
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - p, 4);
+      angle = from + delta * e; setAngle(angle);
+      if (p < 1){ requestAnimationFrame(frame); return; }
+      angle = to; done(target);
     }
-    ctx.fillStyle = 'rgba(29,27,58,.55)';
-    ctx.font = '400 ' + Math.max(18, r.width/14) + 'px "Bowlby One", sans-serif';
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillText('Scratch here', r.width/2, r.height/2);
+    msg.textContent = 'Spinning…';
+    requestAnimationFrame(frame);
+  });
+
+  function done(target){
+    var n = target + 1;
+    var color = n % 2 ? 'red' : 'black';
+    if (rigged >= 0){
+      setHeat(heat + 25);
+      if (heat >= 100){
+        busted = true;
+        msg.textContent = 'Busted. The pit boss saw that one. Spin again to start over.';
+        btn.textContent = 'Reset';
+      } else {
+        msg.textContent = n + ' ' + color + ', exactly as planned. Heat +25.';
+      }
+    } else {
+      setHeat(heat - 10);
+      msg.textContent = n + ' ' + color + '. An honest spin. Heat cools a little.';
+    }
+    busy = false; btn.disabled = false;
+    if (!busted) btn.textContent = 'Spin';
   }
 
-  function pos(e){ var r = cv.getBoundingClientRect(); return {x:e.clientX - r.left, y:e.clientY - r.top}; }
-  var last = null;
-  function scratch(p){
-    var r = cv.getBoundingClientRect();
-    ctx.globalCompositeOperation = 'destination-out';
-    ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.lineWidth = Math.max(28, r.width/11);
-    ctx.beginPath();
-    if (last){ ctx.moveTo(last.x,last.y); } else { ctx.moveTo(p.x,p.y); }
-    ctx.lineTo(p.x+.1,p.y+.1); ctx.stroke();
-    last = p;
-    if (++checks % 12 === 0) measure();
-  }
-  function measure(){
-    var data = ctx.getImageData(0,0,cv.width,cv.height).data, clear = 0, step = 64;
-    for (var i = 3; i < data.length; i += 4*step){ if (data[i] === 0) clear++; }
-    if (clear / (data.length/(4*step)) > .45) reveal();
-  }
-  function reveal(){ if (revealed) return; revealed = true; cv.classList.add('gone'); document.getElementById('reveal').hidden = true; }
-
-  cv.addEventListener('pointerdown', function(e){ drawing = true; last = null; cv.setPointerCapture(e.pointerId); scratch(pos(e)); });
-  cv.addEventListener('pointermove', function(e){ if (drawing) scratch(pos(e)); });
-  cv.addEventListener('pointerup', function(){ drawing = false; last = null; measure(); });
-  cv.addEventListener('pointercancel', function(){ drawing = false; last = null; });
-  document.getElementById('reveal').addEventListener('click', reveal);
-
-  var t; window.addEventListener('resize', function(){ if (revealed) return; clearTimeout(t); t = setTimeout(paint, 150); });
-  if (document.fonts && document.fonts.ready){ document.fonts.ready.then(paint); } else { paint(); }
-  paint();
+  /* Trailer: load YouTube only when asked */
+  var tr = document.getElementById('trailer');
+  tr.addEventListener('click', function(){
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/QcujLWy_Nro?autoplay=1&rel=0';
+    f.title = "Swindler's Roulette trailer";
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true;
+    var box = document.createElement('div');
+    box.className = 'trailer';
+    box.style.cursor = 'auto';
+    box.appendChild(f);
+    tr.replaceWith(box);
+  });
 
   /* ALT F4 window */
   var lines = [
@@ -320,9 +507,9 @@
     ['Closer.', 'But the button was never the answer.'],
     ['Nice try.', 'That is more or less the whole game.']
   ];
-  var n = 0;
+  var c = 0;
   document.getElementById('closer').addEventListener('click', function(){
-    var l = lines[Math.min(n, lines.length-1)]; n++;
+    var l = lines[Math.min(c, lines.length - 1)]; c++;
     document.getElementById('win-msg').innerHTML = l[0] + '<span class="note">' + l[1] + '</span>';
   });
 })();

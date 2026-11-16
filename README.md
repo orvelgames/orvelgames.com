@@ -1,2 +1,2 @@
 # orvelgames.com
-Official website of Orvel Studio
+Official website of Orvel Games
